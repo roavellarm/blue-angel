@@ -10,6 +10,7 @@ export default function Router() {
       <Screen name="Home" component={Page.Home} />
       <Screen name="Letter" component={Page.Letter} />
       <Screen name="LettersOptions" component={Page.LettersOptions} />
+      <Screen name="LetterSound" component={Page.LetterSound} />
     </Navigator>
   )
 }
