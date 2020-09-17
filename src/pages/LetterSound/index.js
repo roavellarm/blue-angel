@@ -1,15 +1,21 @@
 import React from 'react'
-import { Alert } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import Button from '../../components/LetterButton'
 import listenImage from '../../assets/images/listening.png'
 import * as S from './styled'
 
-export default function LetterSound() {
+export default function LetterSound({ route }) {
+  const { navigate } = useNavigation()
+
+  const handleOnPress = () => {
+    return navigate({ name: 'LetterListen', params: route.params })
+  }
+
   return (
     <S.Container>
       <S.Image source={listenImage} resizeMode="contain" />
       <S.Text>VAMOS OUVIR O SOM DAS LETRAS.</S.Text>
-      <Button title="OK" onPress={() => Alert.alert('You clicked me!')} />
+      <Button title="OK" onPress={handleOnPress} />
     </S.Container>
   )
 }
