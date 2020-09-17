@@ -13,6 +13,6 @@ export const ButtonContainer = styled(RectButton)`
 
 export const ButtonText = styled.Text`
   font-family: ${({ theme }) => theme.text.fontFamily};
-  font-size: 24px;
+  font-size: 30px;
   color: white;
 `
