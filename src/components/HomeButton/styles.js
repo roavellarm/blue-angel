@@ -12,5 +12,5 @@ export const ButtonContainer = styled(RectButton)`
 
 export const ButtonImage = styled.Image`
   height: 100%;
-  width: auto;
+  width: 100%;
 `
