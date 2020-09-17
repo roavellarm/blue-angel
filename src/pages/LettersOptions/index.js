@@ -1,24 +1,28 @@
 import React from 'react'
-import styled from 'styled-components/native'
-
-const Container = styled.View``
-
-const Text = styled.Text``
-
-const Button = styled.Button``
+import faderImg from '../../assets/images/fader.png'
+import * as S from './styles'
 
 export default function LettersOptions() {
+  const options = [5, 4, 3, 2, 1]
+
   return (
-    <Container>
-      <Text>
+    <S.Container>
+      <S.Text>
         Cada nível tem um grupo de letras do alfabeto para aprender sobre as
         letras!
-      </Text>
-      <Button title="1" />
-      <Button title="2" />
-      <Button title="3" />
-      <Button title="4" />
-      <Button title="5" />
-    </Container>
+      </S.Text>
+
+      {/* <S.ButtonsContainer> */}
+      <S.ImageBackground source={faderImg} resizeMode="contain">
+        {options.map((option) => {
+          return (
+            <S.Button key={option}>
+              <S.ButtonText>{option}</S.ButtonText>
+            </S.Button>
+          )
+        })}
+      </S.ImageBackground>
+      {/* </S.ButtonsContainer> */}
+    </S.Container>
   )
 }
