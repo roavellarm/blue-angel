@@ -1,5 +1,7 @@
 import React from 'react'
+import { Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+
 import abc from '../../assets/images/abc-button.png'
 import book from '../../assets/images/book-button.png'
 import pencil from '../../assets/images/pencil-button.png'
@@ -9,11 +11,17 @@ import { Container } from './styles'
 export default function Home() {
   const { navigate } = useNavigation()
 
+  const buttonsList = [
+    { image: abc, action: () => navigate('LettersOptions') },
+    { image: book, action: () => Alert.alert('You clicked me!') },
+    { image: pencil, action: () => Alert.alert('You clicked me!') },
+  ]
+
   return (
     <Container>
-      <Button image={abc} onPress={() => navigate('LettersOptions')} />
-      <Button image={book} />
-      <Button image={pencil} />
+      {buttonsList.map((button, index) => (
+        <Button key={index} image={button.image} onPress={button.action} />
+      ))}
     </Container>
   )
 }
