@@ -5,6 +5,7 @@ import { AppLoading } from 'expo'
 import { NavigationContainer } from '@react-navigation/native'
 import { Jua_400Regular, useFonts } from '@expo-google-fonts/jua'
 import { ThemeProvider } from 'styled-components/native'
+import { SpeakProvider } from './src/contexts/speak'
 import theme from './src/theme'
 import Router from './src/Router'
 
@@ -15,9 +16,11 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <Router />
-      </NavigationContainer>
+      <SpeakProvider>
+        <NavigationContainer>
+          <Router />
+        </NavigationContainer>
+      </SpeakProvider>
       <StatusBar style="light" />
     </ThemeProvider>
   )
