@@ -18,6 +18,7 @@
     "react/jsx-filename-extension": ["off", { "extensions": [".js", ".jsx"] }],
     "react/no-array-index-key": "off",
     "camelcase": "off",
-    "react/style-prop-object": "off"
+    "react/style-prop-object": "off",
+    "import/prefer-default-export": "off"
   }
 }
