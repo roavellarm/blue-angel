@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
 import planetImg from '../../../assets/images/planet.png'
 import * as S from './styles'
@@ -23,9 +24,9 @@ export default function Page5() {
   }, [])
 
   return (
-    <S.Container>
+    <Container color="#0e457f">
       <S.Image source={planetImg} />
       <S.Text>{text}</S.Text>
-    </S.Container>
+    </Container>
   )
 }
