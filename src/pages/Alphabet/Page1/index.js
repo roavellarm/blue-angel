@@ -1,14 +1,14 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import faderImg from '../../assets/images/fader.png'
+import faderImg from '../../../assets/images/fader.png'
 import * as S from './styles'
 
-export default function LettersOptions() {
+export default function Page1() {
   const options = [5, 4, 3, 2, 1]
   const { navigate } = useNavigation()
 
   const handleChoice = (choice) =>
-    navigate({ name: 'Letter', params: { choice } })
+    navigate({ name: 'Alphabet-Page2', params: { choice } })
 
   return (
     <S.Container>

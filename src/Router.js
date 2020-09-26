@@ -8,10 +8,10 @@ export default function Router() {
   return (
     <Navigator headerMode="none" initialRouteName="Home">
       <Screen name="Home" component={Page.Home} />
-      <Screen name="Letter" component={Page.Letter} />
-      <Screen name="LettersOptions" component={Page.LettersOptions} />
-      <Screen name="LetterSound" component={Page.LetterSound} />
-      <Screen name="LetterListen" component={Page.LetterListen} />
+      <Screen name="Alphabet-Page1" component={Page.Alphabet.Page1} />
+      <Screen name="Alphabet-Page2" component={Page.Alphabet.Page2} />
+      <Screen name="Alphabet-Page3" component={Page.Alphabet.Page3} />
+      <Screen name="Alphabet-Page4" component={Page.Alphabet.Page4} />
     </Navigator>
   )
 }

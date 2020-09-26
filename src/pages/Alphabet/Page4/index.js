@@ -1,9 +1,9 @@
 import React from 'react'
 import { Alert } from 'react-native'
-import fingerImg from '../../assets/images/fingerPress.png'
+import fingerImg from '../../../assets/images/fingerPress.png'
 import * as S from './styles'
 
-export default function LetterListen({ route }) {
+export default function Page4({ route }) {
   const letters = route.params.split(' ')
 
   const playLetter = (option) => {

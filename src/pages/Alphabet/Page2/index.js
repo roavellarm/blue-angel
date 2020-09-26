@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import Button from '../../components/LetterButton'
+import Button from '../../../components/LetterButton'
 import * as S from './styles'
 
 const options = [
@@ -11,12 +11,13 @@ const options = [
   { letters: 'U V X Y W Z' },
 ]
 
-export default function Letter({ route }) {
+export default function Page2({ route }) {
   const { choice } = route.params
   const { navigate } = useNavigation()
-  const letters = options[choice - 1].letters
+  const { letters } = options[choice - 1]
 
-  const handleOnPress = () => navigate({ name: 'LetterSound', params: letters })
+  const handleOnPress = () =>
+    navigate({ name: 'Alphabet-Page3', params: letters })
 
   return (
     <S.LetterContainer>

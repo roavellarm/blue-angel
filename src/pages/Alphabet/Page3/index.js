@@ -1,14 +1,14 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import Button from '../../components/LetterButton'
-import listenImage from '../../assets/images/listening.png'
+import Button from '../../../components/LetterButton'
+import listenImage from '../../../assets/images/listening.png'
 import * as S from './styled'
 
-export default function LetterSound({ route }) {
+export default function Page3({ route }) {
   const { navigate } = useNavigation()
 
   const handleOnPress = () => {
-    return navigate({ name: 'LetterListen', params: route.params })
+    return navigate({ name: 'Alphabet-Page4', params: route.params })
   }
 
   return (
