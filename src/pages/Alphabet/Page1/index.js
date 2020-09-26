@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import faderImg from '../../../assets/images/fader.png'
 import { useSpeachContext } from '../../../contexts/speak'
+import Container from '../../../components/Container'
 import * as S from './styles'
 
 export default function Page1() {
@@ -19,7 +20,7 @@ export default function Page1() {
   useEffect(() => speak(text), [])
 
   return (
-    <S.Container>
+    <Container>
       <S.Text>{text}</S.Text>
 
       <S.ImageBackground source={faderImg} resizeMode="contain">
@@ -29,6 +30,6 @@ export default function Page1() {
           </S.Button>
         ))}
       </S.ImageBackground>
-    </S.Container>
+    </Container>
   )
 }

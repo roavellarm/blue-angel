@@ -1,15 +1,9 @@
 import styled from 'styled-components/native'
 import { RectButton } from 'react-native-gesture-handler'
 
-export const Container = styled.View`
-  flex: 1;
-  background: #0daecc;
-  align-items: center;
-  padding-top: 40px;
-`
-
 export const Text = styled.Text`
   font-family: ${({ theme }) => theme.text.fontFamily};
+  padding-top: 20px;
   font-size: 30px;
   line-height: 45px;
   text-align: center;

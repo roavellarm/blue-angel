@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Feather } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
+import Container from '../../../components/Container'
 import fingerImg from '../../../assets/images/fingerPress.png'
 import { useSpeachContext } from '../../../contexts/speak'
 import * as S from './styles'
@@ -19,7 +20,7 @@ export default function Page4({ route }) {
   }
 
   return (
-    <S.Container>
+    <Container hasPadding={false} color="#0daecc">
       <S.Text>{title}</S.Text>
       <S.Image source={fingerImg} resizeMode="contain" />
       <S.ButtonsContainer>
@@ -42,6 +43,6 @@ export default function Page4({ route }) {
         size={60}
         onPress={handleNavigate}
       />
-    </S.Container>
+    </Container>
   )
 }

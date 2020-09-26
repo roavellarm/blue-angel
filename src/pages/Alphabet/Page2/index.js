@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Button from '../../../components/LetterButton'
+import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
 import * as S from './styles'
 
@@ -37,10 +38,14 @@ export default function Page2({ route }) {
   }
 
   return (
-    <S.LetterContainer>
+    <Container color="#f9ad30">
       <S.Title>{`${title}:`}</S.Title>
       <S.Letters>{showLetters()}</S.Letters>
-      <Button title="VAMOS LÁ!" onPress={handleNavigate} />
-    </S.LetterContainer>
+      <Button
+        title="VAMOS LÁ!"
+        onPress={handleNavigate}
+        style={{ marginBottom: 60 }}
+      />
+    </Container>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Button from '../../../components/LetterButton'
+import Container from '../../../components/Container'
 import listenImage from '../../../assets/images/listening.png'
 import { useSpeachContext } from '../../../contexts/speak'
 import * as S from './styled'
@@ -18,10 +19,10 @@ export default function Page3({ route }) {
   useEffect(() => speak(text), [])
 
   return (
-    <S.Container>
+    <Container color="#0daecc">
       <S.Image source={listenImage} resizeMode="contain" />
       <S.Text>{text}</S.Text>
       <Button title="OK" onPress={handleNavigate} />
-    </S.Container>
+    </Container>
   )
 }
