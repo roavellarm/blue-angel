@@ -12,7 +12,7 @@ export default function Home() {
   const { navigate } = useNavigation()
 
   const buttonsList = [
-    { image: abc, action: () => navigate('LettersOptions') },
+    { image: abc, action: () => navigate('Alphabet-Page1') },
     { image: book, action: () => Alert.alert('You clicked me!') },
     { image: pencil, action: () => Alert.alert('You clicked me!') },
   ]

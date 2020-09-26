@@ -1,27 +1,47 @@
-import React from 'react'
-import { Alert } from 'react-native'
+import React, { useEffect } from 'react'
+import { Feather } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
 import fingerImg from '../../../assets/images/fingerPress.png'
+import { useSpeachContext } from '../../../contexts/speak'
 import * as S from './styles'
 
 export default function Page4({ route }) {
-  const letters = route.params.split(' ')
+  const { letters } = route.params
+  const { navigate } = useNavigation()
+  const { speak, stopSpeaking } = useSpeachContext()
+  const title = 'PRESSIONE NA LETRA PARA OUVIR O SOM!'
 
-  const playLetter = (option) => {
-    return Alert.alert(`Falando a letra "${option}"`)
+  useEffect(() => speak(title), [])
+
+  const handleNavigate = () => {
+    stopSpeaking()
+    return navigate('Alphabet-Page5')
   }
 
   return (
     <S.Container>
+      <S.Text>{title}</S.Text>
       <S.Image source={fingerImg} resizeMode="contain" />
-      <S.Text>CLIQUE NA LETRA PARA OUVIR O SOM!</S.Text>
-
-      {letters.map((letter, index) => {
-        return (
-          <S.Button key={index} onPress={() => playLetter(letter)}>
+      <S.ButtonsContainer>
+        {letters.map((letter, index) => (
+          <S.Button
+            key={index}
+            onPress={() => {
+              stopSpeaking()
+              speak(letter)
+            }}
+          >
             <S.ButtonText>{letter}</S.ButtonText>
           </S.Button>
-        )
-      })}
+        ))}
+      </S.ButtonsContainer>
+      <Feather
+        style={{ padding: 20 }}
+        name="chevron-right"
+        color="white"
+        size={60}
+        onPress={handleNavigate}
+      />
     </S.Container>
   )
 }
