@@ -13,6 +13,8 @@ export default function Router() {
       <Screen name="Alphabet-Page3" component={Page.Alphabet.Page3} />
       <Screen name="Alphabet-Page4" component={Page.Alphabet.Page4} />
       <Screen name="Alphabet-Page5" component={Page.Alphabet.Page5} />
+      <Screen name="Alphabet-Page6" component={Page.Alphabet.Page6} />
+      <Screen name="Alphabet-Page7" component={Page.Alphabet.Page7} />
     </Navigator>
   )
 }

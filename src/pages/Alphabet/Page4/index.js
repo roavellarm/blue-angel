@@ -16,7 +16,7 @@ export default function Page4({ route }) {
 
   const handleNavigate = () => {
     stopSpeaking()
-    return navigate('Alphabet-Page5')
+    return navigate({ name: 'Alphabet-Page5', params: route.params })
   }
 
   return (

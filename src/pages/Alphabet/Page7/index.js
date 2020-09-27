@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
-import planetImg from '../../../assets/images/planet.png'
+import image from '../../../assets/images/image.png'
 import * as S from './styles'
 
-export default function Page5({ route }) {
+export default function Page7({ route }) {
   const { navigate } = useNavigation()
-  const text = 'TUDO QUE EXISTE COMEÇA COM UMA LETRA.'
+  const text = 'TODA IMAGEM COMEÇA COM UMA LETRA.'
   const { speak, stopSpeaking } = useSpeachContext()
 
   const timeout = (delay) => new Promise((res) => setTimeout(res, delay))
@@ -24,8 +24,8 @@ export default function Page5({ route }) {
   }, [])
 
   return (
-    <Container color="#0e457f">
-      <S.Image source={planetImg} />
+    <Container color="#02A7E8">
+      <S.Image source={image} />
       <S.Text>{text}</S.Text>
     </Container>
   )

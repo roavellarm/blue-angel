@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import Button from '../../../components/LetterButton'
 import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
+import { checkLetterSpell } from '../../../utils'
 import * as S from './styles'
 
 const options = [
@@ -20,7 +21,8 @@ export default function Page2({ route }) {
   const { letters } = options[choice - 1]
   const { speak, stopSpeaking } = useSpeachContext()
 
-  const getLettersWithComma = () => letters.map((letter) => `${letter}`)
+  const getLettersWithComma = () =>
+    letters.map((letter) => `${checkLetterSpell(letter)}`)
 
   const showLetters = () =>
     letters.map((letter, index) =>
