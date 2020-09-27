@@ -20,7 +20,12 @@ export default function Home() {
   return (
     <Container>
       {buttonsList.map((button, index) => (
-        <Button key={index} image={button.image} onPress={button.action} />
+        <Button
+          key={index}
+          image={button.image}
+          onPress={button.action}
+          enabled={button.image === abc}
+        />
       ))}
     </Container>
   )
