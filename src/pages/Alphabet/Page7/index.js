@@ -7,7 +7,7 @@ import * as S from './styles'
 
 export default function Page7({ route }) {
   const { navigate } = useNavigation()
-  const text = 'TODA IMAGEM COMEÇA COM UMA LETRA.'
+  const text = 'TODO OBJETO COMEÇA COM UMA LETRA.'
   const { speak, stopSpeaking } = useSpeachContext()
 
   const timeout = (delay) => new Promise((res) => setTimeout(res, delay))
