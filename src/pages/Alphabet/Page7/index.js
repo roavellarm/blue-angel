@@ -15,7 +15,7 @@ export default function Page7({ route }) {
   const wait = async () => {
     await timeout(5000)
     stopSpeaking()
-    return navigate({ name: 'Alphabet-Page6', params: route.params })
+    return navigate({ name: 'Alphabet-Page8', params: route.params })
   }
 
   useEffect(() => {
