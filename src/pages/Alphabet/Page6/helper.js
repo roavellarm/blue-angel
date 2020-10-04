@@ -52,5 +52,5 @@ export const images = [
   { letter: 'X', name: 'xicara', image: xicara },
   { letter: 'Y', name: 'yakissoba', image: yakissoba },
   { letter: 'W', name: 'willian', image: willian },
-  { letter: 'Z', name: 'zebra', image: aaaaaaaa },
+  { letter: 'Z', name: 'zebra', image: zebra },
 ]
