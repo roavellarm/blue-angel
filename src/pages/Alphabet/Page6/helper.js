@@ -16,7 +16,7 @@ import oculos from '../../../assets/images/oculos.png'
 import pirulito from '../../../assets/images/pirulito.png'
 import queijo from '../../../assets/images/queijo.png'
 import rato from '../../../assets/images/rato.png'
-import sapo from '../../../assets/images/pirulito.png'
+import sapo from '../../../assets/images/sapo.png'
 import tapete from '../../../assets/images/tapete.png'
 import uva from '../../../assets/images/uva.png'
 import vassoura from '../../../assets/images/vassoura.png'
@@ -24,7 +24,6 @@ import willian from '../../../assets/images/willian.png'
 import xicara from '../../../assets/images/xicara.png'
 import yakissoba from '../../../assets/images/yakissoba.png'
 import zebra from '../../../assets/images/zebra.png'
-
 
 export const images = [
   { letter: 'A', name: 'abelha', image: abelha },
