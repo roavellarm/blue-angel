@@ -5,9 +5,8 @@ import { useNavigation } from '@react-navigation/native'
 import Container from '../../../components/Container'
 import fingerImg from '../../../assets/images/backgrounds/fingerPress.png'
 import { useSpeachContext } from '../../../contexts/speak'
-import { checkLetterSpell } from '../../../utils'
+import { checkLetterSpell, images } from '../../../utils'
 import * as S from './styles'
-import { images } from './helper'
 
 export default function Page6({ route }) {
   const [modalVisible, setModalVisible] = useState(false)
