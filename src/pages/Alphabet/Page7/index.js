@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
-import image from '../../../assets/images/image.png'
+import image from '../../../assets/images/backgrounds/image.png'
 import * as S from './styles'
 
 export default function Page7({ route }) {

@@ -3,12 +3,12 @@ import Container from '../../../components/Container'
 import ballImg from '../../../assets/images/forLessons/ball.png'
 import * as S from './styles'
 
-export default function Page8() {
-  const teste = ['GFG_1', 'GeeksForGeeks', 'Geeks', 'Computer Science Portal']
+export default function Page8({ route }) {
+  const { letters } = route.params
 
-  const getRandomPosition = (arr) => Math.floor(Math.random() * arr.length)
+  const sortLetter = () => Math.floor(Math.random() * letters.length)
 
-  console.log(teste[getRandomPosition()])
+  console.log(letters[sortLetter()])
 
   return (
     <Container color="#0daecc">
