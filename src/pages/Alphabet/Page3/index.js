@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Button from '../../../components/LetterButton'
 import Container from '../../../components/Container'
-import listenImage from '../../../assets/images/listening.png'
+import listenImage from '../../../assets/images/backgrounds/listening.png'
 import { useSpeachContext } from '../../../contexts/speak'
 import * as S from './styled'
 
