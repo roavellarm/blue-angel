@@ -6,7 +6,7 @@ const { Navigator, Screen } = createStackNavigator()
 
 export default function Router() {
   return (
-    <Navigator headerMode="none" initialRouteName="Alphabet-Page8">
+    <Navigator headerMode="none" initialRouteName="Home">
       <Screen name="Home" component={Page.Home} />
       <Screen name="Alphabet-Page1" component={Page.Alphabet.Page1} />
       <Screen name="Alphabet-Page2" component={Page.Alphabet.Page2} />

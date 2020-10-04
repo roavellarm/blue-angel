@@ -7,7 +7,7 @@ import foca from '../../../assets/images/forLessons/foca.png'
 import girafa from '../../../assets/images/forLessons/girafa.png'
 import hipopotamo from '../../../assets/images/forLessons/hipopotamo.png'
 import pirulito from '../../../assets/images/forLessons/pirulito.png'
-import aaaaaaaa from '../../../assets/images/backgrounds/clouds.png' // Temporary
+import aaaaaaaa from '../../../assets/images/backgrounds/clouds.png'
 
 export const images = [
   { letter: 'A', name: 'abelha', image: abelha },

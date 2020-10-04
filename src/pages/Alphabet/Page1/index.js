@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import faderImg from '../../../assets/images/fader.png'
+import faderImg from '../../../assets/images/backgrounds/fader.png'
 import { useSpeachContext } from '../../../contexts/speak'
 import Container from '../../../components/Container'
 import * as S from './styles'
