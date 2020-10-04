@@ -6,8 +6,24 @@ import elefante from '../../../assets/images/forLessons/elefante.png'
 import foca from '../../../assets/images/forLessons/foca.png'
 import girafa from '../../../assets/images/forLessons/girafa.png'
 import hipopotamo from '../../../assets/images/forLessons/hipopotamo.png'
+import igreja from '../../../assets/images/forLessons/igreja.png'
+import joaninha from '../../../assets/images/forLessons/joaninha.png'
+import ketchup from '../../../assets/images/forLessons/ketchup.png'
+import laço from '../../../assets/images/forLessons/laço.png'
+import moto from '../../../assets/images/forLessons/moto.png'
+import navio from '../../../assets/images/forLessons/navio.png'
+import oculos from '../../../assets/images/forLessons/oculos.png'
 import pirulito from '../../../assets/images/forLessons/pirulito.png'
-import aaaaaaaa from '../../../assets/images/backgrounds/clouds.png' // Temporary
+import queijo from '../../../assets/images/forLessons/queijo.png'
+import rato from '../../../assets/images/forLessons/rato.png'
+import sapo from '../../../assets/images/forLessons/sapo.png'
+import tapete from '../../../assets/images/forLessons/tapete.png'
+import uva from '../../../assets/images/forLessons/uva.png'
+import vassoura from '../../../assets/images/forLessons/vassoura.png'
+import willian from '../../../assets/images/forLessons/willian.png'
+import xicara from '../../../assets/images/forLessons/xicara.png'
+import yakissoba from '../../../assets/images/forLessons/yakissoba.png'
+import zebra from '../../../assets/images/forLessons/zebra.png'
 
 export const images = [
   { letter: 'A', name: 'abelha', image: abelha },
@@ -18,22 +34,22 @@ export const images = [
   { letter: 'F', name: 'foca', image: foca },
   { letter: 'G', name: 'girafa', image: girafa },
   { letter: 'H', name: 'hipopótamo', image: hipopotamo },
-  { letter: 'I', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'J', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'K', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'L', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'M', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'N', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'O', name: 'aaaaaaaa', image: aaaaaaaa },
+  { letter: 'I', name: 'igreja', image: igreja },
+  { letter: 'J', name: 'joaninha', image: joaninha },
+  { letter: 'K', name: 'ketchup', image: ketchup },
+  { letter: 'L', name: 'laço', image: laço },
+  { letter: 'M', name: 'moto', image: moto },
+  { letter: 'N', name: 'navio', image: navio },
+  { letter: 'O', name: 'oculos', image: oculos },
   { letter: 'P', name: 'pirulito', image: pirulito },
-  { letter: 'Q', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'R', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'S', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'T', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'U', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'V', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'X', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'Y', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'W', name: 'aaaaaaaa', image: aaaaaaaa },
-  { letter: 'Z', name: 'aaaaaaaa', image: aaaaaaaa },
+  { letter: 'Q', name: 'queijo', image: queijo },
+  { letter: 'R', name: 'rato', image: rato },
+  { letter: 'S', name: 'sapo', image: sapo },
+  { letter: 'T', name: 'tapete', image: tapete },
+  { letter: 'U', name: 'uva', image: uva },
+  { letter: 'V', name: 'vassoura', image: vassoura },
+  { letter: 'X', name: 'xicara', image: xicara },
+  { letter: 'Y', name: 'yakissoba', image: yakissoba },
+  { letter: 'W', name: 'willian', image: willian },
+  { letter: 'Z', name: 'zebra', image: zebra },
 ]
