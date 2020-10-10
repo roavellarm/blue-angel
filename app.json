@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "blue-angel",
+    "name": "Blue Angel",
     "slug": "blue-angel",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -15,7 +15,11 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.rodrigoavelar.blueangel"
+    },
+    "android": {
+      "package": "com.rodrigoavelar.blueangel"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
