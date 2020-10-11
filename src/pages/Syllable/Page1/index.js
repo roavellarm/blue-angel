@@ -10,7 +10,7 @@ export default function Page1() {
   const text = 'Cada nível é dividido com o número de sílabas'
 
   const handleChoice = (choice) => {
-    return navigate({ name: '', params: { choice } })
+    return navigate({ name: 'Syllable-Page2', params: { choice } })
   }
 
   return (
@@ -20,7 +20,7 @@ export default function Page1() {
       <S.ImageBackground source={faderImg} resizeMode="contain">
         {options.map((option) => (
           <S.Button key={option} onPress={() => handleChoice(option)}>
-            <S.Button>{option}</S.Button>
+            <S.ButtonText>{option}</S.ButtonText>
           </S.Button>
         ))}
       </S.ImageBackground>

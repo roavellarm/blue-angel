@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import { RectButton } from 'react-native-gesture-handler'
 
 export const Text = styled.Text`
   font-family: ${({ theme }) => theme.text.fontFamily};
@@ -8,7 +9,7 @@ export const Text = styled.Text`
   text-align: center;
   padding: 20px 0px;
 `
-export const Button = styled.Button`
+export const Button = styled(RectButton)`
   margin: 5px;
   width: 70px;
   height: 70px;
