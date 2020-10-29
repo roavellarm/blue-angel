@@ -19,6 +19,8 @@ export default function Router() {
 
       <Screen name="Syllable-Page1" component={Page.Syllable.Page1} />
       <Screen name="Syllable-Page2" component={Page.Syllable.Page2} />
+      <Screen name="Syllable-Page3" component={Page.Syllable.Page3} />
+      <Screen name="Syllable-Page4" component={Page.Syllable.Page4} />
     </Navigator>
   )
 }
