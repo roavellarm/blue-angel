@@ -20,7 +20,12 @@ export default function Page3({ route }) {
 
   return (
     <Container color="#0daecc">
-      <S.Image source={fingerImg} rezideMode="contain" />
+      <S.Image
+        source={fingerImg}
+        resizeMode="contain"
+        height={100}
+        width={100}
+      />
       <S.Text>{title}</S.Text>
       <Button title="OK" onPress={handleNavigate} />
     </Container>
