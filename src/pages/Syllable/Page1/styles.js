@@ -11,7 +11,7 @@ export const Text = styled.Text`
 `
 
 export const Button = styled(RectButton)`
-  margin: 5px;
+  margin: 10px 5px;
   width: 70px;
   height: 70px;
   border-radius: 70px;
@@ -34,4 +34,5 @@ export const ImageBackground = styled.ImageBackground`
   align-items: flex-end;
   padding-right: 5px;
   margin-bottom: 30px;
+  justify-content: center;
 `
