@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Feather } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import Container from '../../../components/Container'
