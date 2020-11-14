@@ -6,7 +6,7 @@ import { useSpeachContext } from '../../../contexts/speak'
 import image from '../../../assets/images/forLessons/bola.png'
 import * as S from './styles'
 
-const options = ['BA', 'FA', 'LA']
+const options = ['BO', 'FA', 'LA']
 
 export default function Page4({ route }) {
   // const [modalVisible, setModalVisible] = useState(false)
@@ -38,6 +38,7 @@ export default function Page4({ route }) {
           </S.Button>
         ))}
       </S.ButtonsContainer>
+
       <Feather
         style={{ padding: 20 }}
         name="chevron-right"
