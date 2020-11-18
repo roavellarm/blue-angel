@@ -13,9 +13,6 @@ export const ImageContainer = styled.View`
 export const Image = styled.Image`
   display: flex;
   padding-top: 20px;
-  line-height: 30px;
-  text-align: center;
-  color: white;
 `
 export const ButtonsContainer = styled.View`
   width: 100%;

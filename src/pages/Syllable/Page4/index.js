@@ -1,81 +1,69 @@
 import React, { useEffect, useState } from 'react'
-import { Feather } from '@expo/vector-icons'
-// import { useNavigation } from '@react-navigation/native'
 import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
-import image from '../../../assets/images/forLessons/bola.png'
-import twoSyllables from './twoSyllables'
+import twoSyllables from './exercicies/twoSyllables'
+import threeSyllables from './exercicies/threeSyllables'
+import fourSyllables from './exercicies/fourSyllables'
+import fiveSyllables from './exercicies/fiveSyllables'
+import { checkLetterSpell } from '../../../utils'
 import * as S from './styles'
 
 export default function Page4({ route }) {
   const { level } = route.params
-  // const { navigate } = useNavigation()
-  const { stopSpeaking } = useSpeachContext()
-  const [selectedOption, setSelectedOption] = useState()
+  const { speak, stopSpeaking } = useSpeachContext()
+  const [exercise, setExercise] = useState({})
+  const [buttonSyllables, setButtonSyllables] = useState([])
+  const successMsg = `Parabéns! Você acertou! A palavra XXXXXX começa com a sílaba ${exercise.correctAnswer}!`
+  const errorMsg = `A palavra XXXXXX não começa com essa sílaba. Tente novamente!`
 
-  const handleNavigate = () => {
+  const sortExercise = (arr) => arr[Math.floor(Math.random() * arr.length)]
+
+  const randomizeSyllables = (arr) => arr.sort(() => Math.random() - 0.5)
+
+  const handleSelectedButton = (syllable) => {
     stopSpeaking()
-    // return navigate({ name: '', params: route.params })
+    speak(checkLetterSpell(syllable))
+    if (syllable === exercise.correctAnswer) {
+      return speak(successMsg)
+    }
+    return speak(errorMsg)
   }
 
-  const sortExercise = (exerciceList) => {
-    // console.log(arr)
-    // return arr[Math.floor(Math.random() * arr.length)]
+  const handleStates = (syllablesExerciciesList) => {
+    const sortedExercise = sortExercise(syllablesExerciciesList)
+    setExercise(sortedExercise)
+    const syllablesOptions = randomizeSyllables(sortedExercise.options)
+    return setButtonSyllables(syllablesOptions)
   }
-
-  const sortSyllableButtons = (syllableList) => {
-    // console.log(arr)
-    // return arr[Math.floor(Math.random() * arr.length)]
-  }
-
-  // const handleSelectedButton = (syllable) => {
-  //   stopSpeaking()
-  //   speak(syllable)
-  //   setSelected(image)
-  // }
 
   const handleSelectedChoice = async () => {
-    console.log(level)
-    if (level === 1) {
-      console.log('bingo!')
-      // Escolheu a de 2 silabas
-      // Pegar a lista de exercicios de 2 silabas (colocar num estado)
-      // Sortear um exercício dessa lista
-      // sortear a ordem das sílabas e adicionar numa variavel
-    }
-    if (level === 2) {
-      // Escolheu a de 2 silabas
-      // Pegar a lista de exercicios de 2 silabas (colocar num estado)
-      // Sortear um exercício dessa lista
-      // sortear a ordem das sílabas e adicionar numa variavel
-    }
-    if (level === 3) {
-      // Escolheu a de 2 silabas
-      // Pegar a lista de exercicios de 2 silabas (colocar num estado)
-      // Sortear um exercício dessa lista
-      // sortear a ordem das sílabas e adicionar numa variavel
-    }
-    // console.log(teste)
-    setSelectedOption(twoSyllables)
+    if (level === 1) return handleStates(twoSyllables)
+    if (level === 2) return handleStates(threeSyllables)
+    if (level === 3) return handleStates(fourSyllables)
+    return handleStates(fiveSyllables)
   }
 
   useEffect(() => {
     handleSelectedChoice()
+    return () => {
+      setExercise({})
+      setButtonSyllables([])
+    }
   }, [])
 
   return (
     <Container hasPadding={false} color="#0daecc">
       <S.ImageContainer>
-        <S.Image source={image} resizeMode="contain" />
+        <S.Image source={exercise.image} resizeMode="contain" />
       </S.ImageContainer>
 
-      <Feather
-        style={{ padding: 20 }}
-        name="chevron-right"
-        color="white"
-        size={60}
-        onPress={handleNavigate}
-      />
+      <S.ButtonsContainer>
+        {buttonSyllables.map((syllable, index) => (
+          <S.Button key={index} onPress={() => handleSelectedButton(syllable)}>
+            <S.ButtonText>{syllable}</S.ButtonText>
+          </S.Button>
+        ))}
+      </S.ButtonsContainer>
     </Container>
   )
 }

@@ -3,6 +3,16 @@ export { images } from './imageHelper'
 export const checkLetterSpell = (letter) => {
   if (letter === 'E') return 'É'
   if (letter === 'O') return 'Ó'
+  if (letter === 'HA') return 'A'
+  if (letter === 'HE') return 'E'
+  if (letter === 'HI') return 'I'
+  if (letter === 'HO') return 'Ó'
+  if (letter === 'HU') return 'U'
+  if (letter === 'TO') return 'TÔ'
+  if (letter === 'YA') return 'IÁ'
+  if (letter === 'YE') return 'IE'
+  if (letter === 'YO') return 'IO'
+  if (letter === 'YU') return 'IU'
   return letter
 }
 
