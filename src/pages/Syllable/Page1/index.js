@@ -11,9 +11,9 @@ export default function Page1() {
   const { navigate } = useNavigation()
   const { speak, stopSpeaking } = useSpeachContext()
 
-  const handleChoice = (choice) => {
+  const handleLevel = (level) => {
     stopSpeaking()
-    return navigate({ name: 'Syllable-Page2', params: { choice } })
+    return navigate({ name: 'Syllable-Page2', params: { level } })
   }
 
   useEffect(() => speak(text), [])
@@ -24,7 +24,7 @@ export default function Page1() {
 
       <S.ImageBackground source={faderImg} resizeMode="contain">
         {options.map((option) => (
-          <S.Button key={option} onPress={() => handleChoice(option)}>
+          <S.Button key={option} onPress={() => handleLevel(option)}>
             <S.ButtonText>{option}</S.ButtonText>
           </S.Button>
         ))}

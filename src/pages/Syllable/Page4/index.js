@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { Feather } from '@expo/vector-icons'
-import { useNavigation } from '@react-navigation/native'
+// import { useNavigation } from '@react-navigation/native'
 import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
 import image from '../../../assets/images/forLessons/bola.png'
-// import threeSyllables from './threeSyllables'
 import twoSyllables from './twoSyllables'
 import * as S from './styles'
 
 export default function Page4({ route }) {
-  // const [modalVisible, setModalVisible] = useState(false)
-  // const [setSelected] = useState({})
-  const { choice } = route.params
-  const { navigate } = useNavigation()
+  const { level } = route.params
+  // const { navigate } = useNavigation()
   const { stopSpeaking } = useSpeachContext()
   const [selectedOption, setSelectedOption] = useState()
 
   const handleNavigate = () => {
     stopSpeaking()
-    return navigate({ name: '', params: route.params })
+    // return navigate({ name: '', params: route.params })
   }
 
   const sortExercise = (exerciceList) => {
@@ -38,19 +35,21 @@ export default function Page4({ route }) {
   // }
 
   const handleSelectedChoice = async () => {
-    if (choice === 0) {
+    console.log(level)
+    if (level === 1) {
+      console.log('bingo!')
       // Escolheu a de 2 silabas
       // Pegar a lista de exercicios de 2 silabas (colocar num estado)
       // Sortear um exercício dessa lista
       // sortear a ordem das sílabas e adicionar numa variavel
     }
-    if (choice === 1) {
+    if (level === 2) {
       // Escolheu a de 2 silabas
       // Pegar a lista de exercicios de 2 silabas (colocar num estado)
       // Sortear um exercício dessa lista
       // sortear a ordem das sílabas e adicionar numa variavel
     }
-    if (choice === 1) {
+    if (level === 3) {
       // Escolheu a de 2 silabas
       // Pegar a lista de exercicios de 2 silabas (colocar num estado)
       // Sortear um exercício dessa lista
@@ -61,7 +60,7 @@ export default function Page4({ route }) {
   }
 
   useEffect(() => {
-    // temp()
+    handleSelectedChoice()
   }, [])
 
   return (
@@ -69,14 +68,6 @@ export default function Page4({ route }) {
       <S.ImageContainer>
         <S.Image source={image} resizeMode="contain" />
       </S.ImageContainer>
-
-      <S.ButtonsContainer>
-        {selectedOption.map((option) => (
-          <S.Button key={option}>
-            <S.ButtonText>{option}</S.ButtonText>
-          </S.Button>
-        ))}
-      </S.ButtonsContainer>
 
       <Feather
         style={{ padding: 20 }}
