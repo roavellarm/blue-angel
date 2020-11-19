@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Alert } from 'react-native'
 import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
 import twoSyllables from './exercicies/twoSyllables'
@@ -13,8 +14,8 @@ export default function Page4({ route }) {
   const { speak, stopSpeaking } = useSpeachContext()
   const [exercise, setExercise] = useState({})
   const [buttonSyllables, setButtonSyllables] = useState([])
-  const successMsg = `Parabéns! Você acertou! A palavra XXXXXX começa com a sílaba ${exercise.correctAnswer}!`
-  const errorMsg = `A palavra XXXXXX não começa com essa sílaba. Tente novamente!`
+  const successMsg = `Parabéns! Você acertou! A palavra ${exercise.image} começa com a sílaba ${exercise.correctAnswer}!`
+  const errorMsg = `A palavra ${exercise.image} não começa com essa sílaba. Tente novamente!`
 
   const sortExercise = (arr) => arr[Math.floor(Math.random() * arr.length)]
 
@@ -24,9 +25,9 @@ export default function Page4({ route }) {
     stopSpeaking()
     speak(checkLetterSpell(syllable))
     if (syllable === exercise.correctAnswer) {
-      return speak(successMsg)
+      return Alert.alert(speak(successMsg))
     }
-    return speak(errorMsg)
+    return Alert.alert(speak(errorMsg))
   }
 
   const handleStates = (syllablesExerciciesList) => {
