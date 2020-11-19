@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Alert } from 'react-native'
+import { Modal, View } from 'react-native'
 import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
 import twoSyllables from './exercicies/twoSyllables'
 import threeSyllables from './exercicies/threeSyllables'
 import fourSyllables from './exercicies/fourSyllables'
 import fiveSyllables from './exercicies/fiveSyllables'
-import { checkLetterSpell } from '../../../utils'
+import { checkLetterSpell, delayTime } from '../../../utils'
 import * as S from './styles'
 
 export default function Page4({ route }) {
+  const [modalVisible, setModalVisible] = useState(false)
   const { level } = route.params
   const { speak, stopSpeaking } = useSpeachContext()
   const [exercise, setExercise] = useState({})
@@ -21,13 +22,21 @@ export default function Page4({ route }) {
 
   const randomizeSyllables = (arr) => arr.sort(() => Math.random() - 0.5)
 
+  const handleModal = async () => {
+    setModalVisible(true)
+    await delayTime(3000)
+    setModalVisible(false)
+  }
+
   const handleSelectedButton = (syllable) => {
     stopSpeaking()
     speak(checkLetterSpell(syllable))
     if (syllable === exercise.correctAnswer) {
-      return Alert.alert(speak(successMsg))
+      speak(successMsg)
+      handleModal()
     }
-    return Alert.alert(speak(errorMsg))
+    speak(errorMsg)
+    handleModal()
   }
 
   const handleStates = (syllablesExerciciesList) => {
@@ -54,6 +63,20 @@ export default function Page4({ route }) {
 
   return (
     <Container hasPadding={false} color="#0daecc">
+      <Modal animationType="slide" transparent visible={modalVisible}>
+        <View
+          style={{
+            backgroundColor: '#F06969',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 15,
+            margin: 50,
+            padding: 30,
+          }}
+        >
+          <S.Text>{successMsg}</S.Text>
+        </View>
+      </Modal>
       <S.ImageContainer>
         <S.Image source={exercise.image} resizeMode="contain" />
       </S.ImageContainer>
