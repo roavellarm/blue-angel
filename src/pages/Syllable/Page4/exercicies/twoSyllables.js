@@ -53,7 +53,7 @@ const twoSyllables = [
     options: ['SA', 'PI', 'BE'],
     word: 'sapo',
   },
-  { image: uva, correctAnswer: 'U', options: ['U', 'I', 'BE'], palavra: 'uva' },
+  { image: uva, correctAnswer: 'U', options: ['U', 'I', 'BE'], word: 'uva' },
   {
     image: zebra,
     correctAnswer: 'ZE',

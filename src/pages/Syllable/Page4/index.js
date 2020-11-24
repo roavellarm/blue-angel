@@ -15,9 +15,9 @@ export default function Page4({ route }) {
   const { speak, stopSpeaking } = useSpeachContext()
   const [exercise, setExercise] = useState({})
   const [buttonSyllables, setButtonSyllables] = useState([])
-  const successMsg = `Parabéns! Você acertou! A palavra ${exercise.word} começa com a sílaba ${exercise.correctAnswer}!`
-  const errorMsg = `A palavra ${exercise.word} não começa com essa sílaba. Tente novamente!`
-  console.log(`${successMsg}`)
+  const [successMsg, setSuccessMsg] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
+  const [isCorrectAnswer, setIsCorrectAnswer] = useState(false)
 
   const sortExercise = (arr) => arr[Math.floor(Math.random() * arr.length)]
 
@@ -33,9 +33,11 @@ export default function Page4({ route }) {
     stopSpeaking()
     speak(checkLetterSpell(syllable))
     if (syllable === exercise.correctAnswer) {
+      setIsCorrectAnswer(true)
       speak(successMsg)
       handleModal()
     } else {
+      setIsCorrectAnswer(false)
       speak(errorMsg)
       handleModal()
     }
@@ -44,6 +46,12 @@ export default function Page4({ route }) {
   const handleStates = (syllablesExerciciesList) => {
     const sortedExercise = sortExercise(syllablesExerciciesList)
     setExercise(sortedExercise)
+    setSuccessMsg(
+      `Parabéns! Você acertou! A palavra ${sortedExercise.word} começa com a sílaba ${sortedExercise.correctAnswer}!`
+    )
+    setErrorMsg(
+      `A palavra ${sortedExercise.word} não começa com essa sílaba. Tente novamente!`
+    )
     const syllablesOptions = randomizeSyllables(sortedExercise.options)
     return setButtonSyllables(syllablesOptions)
   }
@@ -57,10 +65,6 @@ export default function Page4({ route }) {
 
   useEffect(() => {
     handleSelectedChoice()
-    return () => {
-      setExercise({})
-      setButtonSyllables([])
-    }
   }, [])
 
   return (
@@ -76,6 +80,7 @@ export default function Page4({ route }) {
           </S.Button>
         ))}
       </S.ButtonsContainer>
+
       <Modal animationType="slide" transparent visible={modalVisible}>
         <View
           style={{
@@ -87,7 +92,25 @@ export default function Page4({ route }) {
             padding: 30,
           }}
         >
-          <S.Text>{successMsg}</S.Text>
+          {isCorrectAnswer ? (
+            <>
+              <S.Image
+                resizeMode="contain"
+                source={exercise.image} // Colocar alguma imagem que simbolice correto/sucesso
+                style={{ width: 150 }}
+              />
+              <S.ButtonText>{exercise.word}</S.ButtonText>
+            </>
+          ) : (
+            <>
+              <S.Image
+                resizeMode="contain"
+                source={exercise.image} // Colocar alguma imagem que simbolize erro
+                style={{ width: 150 }}
+              />
+              <S.ButtonText>Ops! Tente novamente</S.ButtonText>
+            </>
+          )}
         </View>
       </Modal>
     </Container>

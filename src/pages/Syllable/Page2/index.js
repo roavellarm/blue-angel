@@ -19,7 +19,7 @@ export default function Page2({ route }) {
   const selectedLevel = levelsTitles.find((option) => option.level === key)
 
   const handleNavigation = async () => {
-    await delayTime()
+    await delayTime(5000)
     stopSpeaking()
     return navigate({ name: 'Syllable-Page3', params: route.params })
   }
