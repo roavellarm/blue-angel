@@ -15,19 +15,84 @@ import {
 } from '../../../../assets/images/forLessons'
 
 const threeSyllables = [
-  { image: abelha, correctAnswer: 'A', options: ['A', 'LHA', 'VI'] },
-  { image: aviao, correctAnswer: 'A', options: ['A', '', ''] },
-  { image: cachorro, correctAnswer: 'CA', options: ['CA', '', ''] },
-  { image: coelho, correctAnswer: 'CO', options: ['CO', '', ''] },
-  { image: elefante, correctAnswer: 'E', options: ['E', '', ''] },
-  { image: escada, correctAnswer: 'ES', options: ['ES', '', ''] },
-  { image: girafa, correctAnswer: 'GI', options: ['GI', '', ''] },
-  { image: igreja, correctAnswer: 'I', options: ['I', '', ''] },
-  { image: navio, correctAnswer: 'NA', options: ['NA', '', ''] },
-  { image: oculos, correctAnswer: 'O', options: ['O', '', ''] },
-  { image: tapete, correctAnswer: 'TA', options: ['TA', '', ''] },
-  { image: vassoura, correctAnswer: 'VA', options: ['VA', '', ''] },
-  { image: xicara, correctAnswer: 'XI', options: ['XI', '', ''] },
+  {
+    image: abelha,
+    correctAnswer: 'A',
+    options: ['A', 'LHA', 'VI'],
+    word: 'abelha',
+  },
+  {
+    image: aviao,
+    correctAnswer: 'A',
+    options: ['A', 'CO', 'MU'],
+    word: 'aviao',
+  },
+  {
+    image: cachorro,
+    correctAnswer: 'CA',
+    options: ['CA', 'RO', 'BA'],
+    word: 'cachorro',
+  },
+  {
+    image: coelho,
+    correctAnswer: 'CO',
+    options: ['CO', 'DE', 'TU'],
+    word: 'coelho',
+  },
+  {
+    image: elefante,
+    correctAnswer: 'E',
+    options: ['E', 'TE', 'CI'],
+    word: 'elefante',
+  },
+  {
+    image: escada,
+    correctAnswer: 'ES',
+    options: ['ES', 'RU', 'SA'],
+    word: 'escada',
+  },
+  {
+    image: girafa,
+    correctAnswer: 'GI',
+    options: ['GI', 'JU', 'BI'],
+    word: 'girafa',
+  },
+  {
+    image: igreja,
+    correctAnswer: 'I',
+    options: ['I', 'LA', 'MO'],
+    word: 'igreja',
+  },
+  {
+    image: navio,
+    correctAnswer: 'NA',
+    options: ['NA', 'VI', 'SO'],
+    word: 'navio',
+  },
+  {
+    image: oculos,
+    correctAnswer: 'O',
+    options: ['O', 'ME', 'TU'],
+    word: 'oculos',
+  },
+  {
+    image: tapete,
+    correctAnswer: 'TA',
+    options: ['TA', 'CE', 'JU'],
+    word: 'tapete',
+  },
+  {
+    image: vassoura,
+    correctAnswer: 'VA',
+    options: ['VA', 'U', 'DE'],
+    word: 'vassoura',
+  },
+  {
+    image: xicara,
+    correctAnswer: 'XI',
+    options: ['XI', 'NA', 'GO'],
+    word: 'xícara',
+  },
 ]
 
 export default threeSyllables

@@ -15,8 +15,9 @@ export default function Page4({ route }) {
   const { speak, stopSpeaking } = useSpeachContext()
   const [exercise, setExercise] = useState({})
   const [buttonSyllables, setButtonSyllables] = useState([])
-  const successMsg = `Parabéns! Você acertou! A palavra ${exercise.image} começa com a sílaba ${exercise.correctAnswer}!`
-  const errorMsg = `A palavra ${exercise.image} não começa com essa sílaba. Tente novamente!`
+  const successMsg = `Parabéns! Você acertou! A palavra ${exercise.word} começa com a sílaba ${exercise.correctAnswer}!`
+  const errorMsg = `A palavra ${exercise.word} não começa com essa sílaba. Tente novamente!`
+  console.log(`${successMsg}`)
 
   const sortExercise = (arr) => arr[Math.floor(Math.random() * arr.length)]
 
@@ -34,9 +35,10 @@ export default function Page4({ route }) {
     if (syllable === exercise.correctAnswer) {
       speak(successMsg)
       handleModal()
+    } else {
+      speak(errorMsg)
+      handleModal()
     }
-    speak(errorMsg)
-    handleModal()
   }
 
   const handleStates = (syllablesExerciciesList) => {
@@ -63,6 +65,17 @@ export default function Page4({ route }) {
 
   return (
     <Container hasPadding={false} color="#0daecc">
+      <S.ImageContainer>
+        <S.Image source={exercise.image} resizeMode="contain" />
+      </S.ImageContainer>
+
+      <S.ButtonsContainer>
+        {buttonSyllables.map((syllable, index) => (
+          <S.Button key={index} onPress={() => handleSelectedButton(syllable)}>
+            <S.ButtonText>{syllable}</S.ButtonText>
+          </S.Button>
+        ))}
+      </S.ButtonsContainer>
       <Modal animationType="slide" transparent visible={modalVisible}>
         <View
           style={{
@@ -77,17 +90,6 @@ export default function Page4({ route }) {
           <S.Text>{successMsg}</S.Text>
         </View>
       </Modal>
-      <S.ImageContainer>
-        <S.Image source={exercise.image} resizeMode="contain" />
-      </S.ImageContainer>
-
-      <S.ButtonsContainer>
-        {buttonSyllables.map((syllable, index) => (
-          <S.Button key={index} onPress={() => handleSelectedButton(syllable)}>
-            <S.ButtonText>{syllable}</S.ButtonText>
-          </S.Button>
-        ))}
-      </S.ButtonsContainer>
     </Container>
   )
 }
