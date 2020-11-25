@@ -5,15 +5,15 @@ import { useSpeachContext } from '../../../contexts/speak'
 import Container from '../../../components/Container'
 import * as S from './styles'
 
-export default Page1(){
+export default function Page1() {
   const options = [1, 2, 3]
-  const text = '..........'
+  const text = 'Cada Nível é dividido pelo quantidade de palavras'
   const { navigate } = useNavigation()
   const { speak, stopSpeanking } = useSpeachContext()
 
   const handleLevel = (level) => {
     stopSpeanking()
-    return navigate({ name:'Phrase-Page1', params: {level}})
+    return navigate({ name: '', params: { level } })
   }
 
   useEffect(() => speak(text), [])

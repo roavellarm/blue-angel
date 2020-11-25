@@ -1,33 +1,36 @@
 import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import Button from '../../../components/LetterButton'
 import Container from '../../../components/Container'
-import fingerImg from '../../../assets/images/backgrounds/fingerPress.png'
 import { useSpeachContext } from '../../../contexts/speak'
+import { delayTime } from '../../../utils'
 import * as S from './styles'
 
-export default function Page3({ route }) {
+const levelsTitles = [
+  { level: 1, title: 'Frases com duas Palvras' },
+  { level: 2, title: 'Frases com três Palavras' },
+  { level: 3, title: 'Frases com Muitas Palvras' },
+]
+
+export default function Page2({ route }) {
   const { navigate } = useNavigation()
   const { speak, stopSpeaking } = useSpeachContext()
-  const title = 'Clique nas palavras corretas'
+  const { level: key } = route.params
+  const selectedLevel = levelsTitles.find((option) => option.level === key)
 
-  useEffect(() => speak(title), [])
-
-  const handleNavigate = () => {
+  const handleNavigation = async () => {
+    await delayTime(5000)
     stopSpeaking()
     return navigate({ name: '', params: route.params })
   }
 
+  useEffect(() => {
+    speak(selectedLevel.title)
+    handleNavigation()
+  }, [])
+
   return (
-    <Container color="#0daecc">
-      <S.Image
-        source={fingerImg}
-        resizeMode="contain"
-        height={100}
-        width={100}
-      />
-      <S.Text>{title}</S.Text>
-      <Button title="OK" onPress={handleNavigate} />
+    <Container color="#9b4acd">
+      <S.Text>{selectedLevel.title}</S.Text>
     </Container>
   )
 }
