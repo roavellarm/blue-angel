@@ -2,18 +2,21 @@ import React, { useEffect, useState } from 'react'
 import { Modal, View } from 'react-native'
 import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
+import twoWords from './exercicies/twoWords'
+import threeWords from './exercicies/threeWords'
+import moreWords from './exercicies/moreWords'
 import { checkLetterSpell, delayTime } from '../../../utils'
 import * as S from './styles'
 
-export default function Page4() {
-  const [visibleModal, serModalVisible] = useState(false)
+export default function Page4({ route }) {
+  const [modalVisible, setModalVisible] = useState(false)
   const { level } = route.params
   const { speak, stopSpeaking } = useSpeachContext()
   const [exercise, setExercise] = useState({})
   const [buttonPhrases, setButtonPhrases] = useState()
-  const [succesMsg, setSuccesMsg] = useState('')
+  const [successMsg, setSuccessMsg] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
-  const [isCorrectAnswer, setIsCorrectA] = useState(false)
+  const [isCorrectAnswer, setIsCorrectAnswer] = useState(false)
 
   const sortExercise = (arr) => arr[Math.floor(Math.random() * arr.length)]
 
@@ -46,15 +49,15 @@ export default function Page4() {
       `Parabéns! Você acertou! A palavra yyyy começa com a sílaba xxxxx!`
     )
     setErrorMsg(`A palavra yyyy não começa com essa sílaba. Tente novamente!`)
-    const syllablesOptions = randomizeSyllables(sortedExercise.options)
-    return setButtonSyllables(syllablesOptions)
+    const syllablesOptions = randomisePhrases(sortedExercise.options)
+    return setButtonPhrases(syllablesOptions)
   }
 
   const handleSelectedChoice = async () => {
-    if (level === 1) return handleStates(twoSyllables)
-    if (level === 2) return handleStates(threeSyllables)
-    if (level === 3) return handleStates(fourSyllables)
-    return handleStates(fiveSyllables)
+    if (level === 1) return handleStates(twoWords)
+    if (level === 2) return handleStates(threeWords)
+    if (level === 3) return handleStates(moreWords)
+    return handleStates(moreWords)
   }
 
   useEffect(() => {
@@ -68,9 +71,9 @@ export default function Page4() {
       </S.ImageContainer>
 
       <S.ButtonsContainer>
-        {buttonSyllables.map((syllable, index) => (
-          <S.Button key={index} onPress={() => handleSelectedButton(syllable)}>
-            <S.ButtonText>{syllable}</S.ButtonText>
+        {buttonPhrases.map((phrase, index) => (
+          <S.Button key={index} onPress={() => handleSelectedButton(phrase)}>
+            <S.ButtonText>{phrase}</S.ButtonText>
           </S.Button>
         ))}
       </S.ButtonsContainer>

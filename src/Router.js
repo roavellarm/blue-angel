@@ -24,6 +24,8 @@ export default function Router() {
 
       <Screen name="Phrase-Page1" component={Page.Phrase.Page1} />
       <Screen name="Phrase-Page2" component={Page.Phrase.Page2} />
+      <Screen name="Phrase-Page3" component={Page.Phrase.Page3} />
+      <Screen name="Phrase-Page4" component={Page.Phrase.Page4} />
     </Navigator>
   )
 }

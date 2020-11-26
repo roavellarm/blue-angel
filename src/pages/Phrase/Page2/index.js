@@ -20,7 +20,7 @@ export default function Page2({ route }) {
   const handleNavigation = async () => {
     await delayTime(5000)
     stopSpeaking()
-    return navigate({ name: '', params: route.params })
+    return navigate({ name: 'Phrase-Page3', params: route.params })
   }
 
   useEffect(() => {

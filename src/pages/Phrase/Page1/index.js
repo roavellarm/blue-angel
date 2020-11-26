@@ -9,11 +9,11 @@ export default function Page1() {
   const options = [1, 2, 3]
   const text = 'Cada Nível é dividido pelo quantidade de palavras'
   const { navigate } = useNavigation()
-  const { speak, stopSpeanking } = useSpeachContext()
+  const { speak, stopSpeaking } = useSpeachContext()
 
   const handleLevel = (level) => {
-    stopSpeanking()
-    return navigate({ name: '', params: { level } })
+    stopSpeaking()
+    return navigate({ name: 'Phrase-page2', params: { level } })
   }
 
   useEffect(() => speak(text), [])
