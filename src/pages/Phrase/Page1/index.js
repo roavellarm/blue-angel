@@ -13,7 +13,7 @@ export default function Page1() {
 
   const handleLevel = (level) => {
     stopSpeaking()
-    return navigate({ name: 'Phrase-page2', params: { level } })
+    return navigate({ name: 'Phrase-Page2', params: { level } })
   }
 
   useEffect(() => speak(text), [])
