@@ -21,3 +21,7 @@ const timeout = (delay) => new Promise((res) => setTimeout(res, delay))
 export const delayTime = async (delay = 3000) => {
   await timeout(delay)
 }
+
+export const sort = (arr) => arr[Math.floor(Math.random() * arr.length)]
+
+export const randomize = (arr) => arr.sort(() => Math.random() - 0.5)
