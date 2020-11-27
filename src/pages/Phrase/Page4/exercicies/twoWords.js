@@ -12,37 +12,37 @@ const twoWords = [
     image: girafa,
     correctAnswer: ['Girafa', 'Amarela'],
     options: ['Girafa', 'Verde', 'Amarela'],
-    word: 'girafa',
+    word: 'Girafa',
   },
   {
     image: ketchup,
     correctAnswer: ['Ketchup', 'Vermelho'],
     options: ['Ketchup', 'Redondo', 'Vermelho'],
-    word: 'ketchup',
+    word: 'Ketchup',
   },
   {
     image: laço,
     correctAnswer: ['Laço', 'Rosa'],
     options: ['Laço', 'Rosa', 'Preto'],
-    word: 'laço',
+    word: 'Laço',
   },
   {
     image: queijo,
     correctAnswer: ['Queijo', 'Amarelo'],
     options: ['Queijo', 'Verde', 'Amarela'],
-    word: 'queijo',
+    word: 'Queijo',
   },
   {
     image: sapo,
     correctAnswer: ['Sapo', 'Verde'],
     options: ['Sapo', 'Verde', 'Colorido'],
-    word: 'girafa',
+    word: 'Girafa',
   },
   {
     image: uva,
     correctAnswer: ['Uva', 'Roxa'],
     options: ['Uva', 'Verde', 'Roxa'],
-    word: 'uva',
+    word: 'Uva',
   },
 ]
 

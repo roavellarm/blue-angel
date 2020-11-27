@@ -6,8 +6,8 @@ import Container from '../../../components/Container'
 import * as S from './styles'
 
 export default function Page1() {
-  const options = [1, 2, 3]
-  const text = 'Cada Nível é dividido pelo quantidade de palavras'
+  const options = [3, 2, 1]
+  const text = 'Cada nível é dividido pela quantidade de palavras'
   const { navigate } = useNavigation()
   const { speak, stopSpeaking } = useSpeachContext()
 

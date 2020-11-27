@@ -2,29 +2,25 @@ import styled from 'styled-components/native'
 import { RectButton } from 'react-native-gesture-handler'
 
 export const ImageContainer = styled.View`
-  display: flex;
   flex-direction: row;
   justify-content: center;
-  color: white;
-  padding-bottom: 30px;
 `
 
 export const Image = styled.Image``
 
 export const ButtonsContainer = styled.View`
-  flex-direction: row;
+  display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  width: 100%;
 `
 
 export const Button = styled(RectButton)`
   background: white;
-  width: 80px;
-  height: 80px;
+  padding: 10px;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 10px 30px;
 `
 export const ButtonText = styled.Text`
   font-family: ${({ theme }) => theme.text.fontFamily};

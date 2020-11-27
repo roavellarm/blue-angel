@@ -31,7 +31,7 @@ export default function Page4({ route }) {
   const handleSelectedButton = (phrase) => {
     stopSpeaking()
     speak(checkLetterSpell(phrase))
-    if (phrase === exercise.correctAnswer) {
+    if (phrase === exercise.correctAnswer[0]) {
       setIsCorrectAnswer(true)
       speak(successMsg)
       handleModal()
@@ -46,9 +46,11 @@ export default function Page4({ route }) {
     const sortedExercise = sortExercise(phrasesExerciciesList)
     setExercise(sortedExercise)
     setSuccessMsg(
-      `Parabéns! Você acertou! A palavra yyyy começa com a sílaba xxxxx!`
+      `Parabéns! Você acertou! A palavra ${sortedExercise.correctAnswer[0]}!`
     )
-    setErrorMsg(`A palavra yyyy não começa com essa sílaba. Tente novamente!`)
+    setErrorMsg(
+      `A palavra ${sortedExercise.correctAnswer[0]} não se escreve assim. Tente novamente!`
+    )
     const syllablesOptions = randomisePhrases(sortedExercise.options)
     return setButtonPhrases(syllablesOptions)
   }
@@ -73,7 +75,7 @@ export default function Page4({ route }) {
       <S.ButtonsContainer>
         {buttonPhrases.map((phrase, index) => (
           <S.Button key={index} onPress={() => handleSelectedButton(phrase)}>
-            <S.ButtonText>{phrase}</S.ButtonText>
+            <S.ButtonText>{phrase.toUpperCase()}</S.ButtonText>
           </S.Button>
         ))}
       </S.ButtonsContainer>

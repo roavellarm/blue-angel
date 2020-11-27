@@ -6,9 +6,9 @@ import { delayTime } from '../../../utils'
 import * as S from './styles'
 
 const levelsTitles = [
-  { level: 1, title: 'Frases com duas Palvras' },
-  { level: 2, title: 'Frases com três Palavras' },
-  { level: 3, title: 'Frases com Muitas Palvras' },
+  { level: 3, title: 'Frases com muitas palavras' },
+  { level: 2, title: 'Frases com três palavras' },
+  { level: 1, title: 'Frases com duas palavras' },
 ]
 
 export default function Page2({ route }) {

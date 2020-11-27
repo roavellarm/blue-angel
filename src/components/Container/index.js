@@ -13,7 +13,7 @@ export default function Container({ color, hasPadding = true, children }) {
       color={color}
       hasPadding={hasPadding}
       contentContainerStyle={{
-        flex: 1,
+        height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
       }}
