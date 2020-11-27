@@ -13,7 +13,7 @@ export default function Page4({ route }) {
   const { level } = route.params
   const { speak, stopSpeaking } = useSpeachContext()
   const [exercise, setExercise] = useState({})
-  const [buttonPhrases, setButtonPhrases] = useState()
+  const [buttonPhrases, setButtonPhrases] = useState([])
   const [successMsg, setSuccessMsg] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false)
