@@ -16,6 +16,7 @@ export default function Page4({ route }) {
   const [buttonPhrases, setButtonPhrases] = useState([])
   const [successMsg, setSuccessMsg] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
+  const [totalCorrectAnswers, setTotalCorrectAnswers] = useState(0)
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false)
 
   const sortExercise = (arr) => arr[Math.floor(Math.random() * arr.length)]
@@ -29,18 +30,19 @@ export default function Page4({ route }) {
   }
 
   const handleSelectedButton = (phrase) => {
-    const comparison = phrase.filter(
-      (word) => exercise.correctAnswer.indexOf(word) > -1
-    )
     stopSpeaking()
     speak(checkLetterSpell(phrase))
-    if (comparison.length === phrase.length) {
-      setIsCorrectAnswer(true)
-      speak(successMsg)
-      handleModal()
+
+    if (exercise.correctAnswer.indexOf(phrase) > -1) {
+      setTotalCorrectAnswers(totalCorrectAnswers + 1)
     } else {
       setIsCorrectAnswer(false)
       speak(errorMsg)
+      handleModal()
+    }
+
+    if (setIsCorrectAnswer === exercise.correctAnswer.length) {
+      speak(successMsg)
       handleModal()
     }
   }
@@ -49,11 +51,13 @@ export default function Page4({ route }) {
     const sortedExercise = sortExercise(phrasesExerciciesList)
     setExercise(sortedExercise)
     setSuccessMsg(
-      `Parabéns! Você acertou! A palavra yyyy começa com a sílaba xxxxx!`
+      `Parabéns! Você acertou! A palavra ${sortedExercise.correctAnswer.toString()}!`
     )
-    setErrorMsg(`A palavra yyyy não começa com essa sílaba. Tente novamente!`)
-    const syllablesOptions = randomisePhrases(sortedExercise.options)
-    return setButtonPhrases(syllablesOptions)
+    setErrorMsg(
+      `A palavra ${sortedExercise.correctAnswer.toString()} não se escreve assim. Tente novamente!`
+    )
+    const phrasesOptions = randomisePhrases(sortedExercise.options)
+    return setButtonPhrases(phrasesOptions)
   }
 
   const handleSelectedChoice = async () => {
@@ -76,7 +80,7 @@ export default function Page4({ route }) {
       <S.ButtonsContainer>
         {buttonPhrases.map((phrase, index) => (
           <S.Button key={index} onPress={() => handleSelectedButton(phrase)}>
-            <S.ButtonText>{phrase}</S.ButtonText>
+            <S.ButtonText>{phrase.toUpperCase()}</S.ButtonText>
           </S.Button>
         ))}
       </S.ButtonsContainer>
@@ -93,14 +97,14 @@ export default function Page4({ route }) {
           }}
         >
           {isCorrectAnswer ? (
-            <>
+            <Container>
               <S.Image
                 resizeMode="contain"
                 source={exercise.image} // Colocar alguma imagem que simbolice correto/sucesso
                 style={{ width: 150 }}
               />
               <S.ButtonText>{exercise.word}</S.ButtonText>
-            </>
+            </Container>
           ) : (
             <>
               <S.Image
