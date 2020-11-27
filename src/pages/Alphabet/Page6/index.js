@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import Container from '../../../components/Container'
 import fingerImg from '../../../assets/images/backgrounds/fingerPress.png'
 import { useSpeachContext } from '../../../contexts/speak'
-import { checkLetterSpell, images } from '../../../utils'
+import { checkLetterSpell, images, delayTime } from '../../../utils'
 import * as S from './styles'
 
 export default function Page6({ route }) {
@@ -23,11 +23,9 @@ export default function Page6({ route }) {
     return navigate({ name: 'Alphabet-Page7', params: route.params })
   }
 
-  const timeout = (delay) => new Promise((res) => setTimeout(res, delay))
-
   const handleModal = async () => {
     setModalVisible(true)
-    await timeout(3000)
+    await delayTime(3000)
     setModalVisible(false)
   }
 
@@ -62,8 +60,11 @@ export default function Page6({ route }) {
           />
         </View>
       </Modal>
+
       <S.Text>{title}</S.Text>
+
       <S.Image source={fingerImg} resizeMode="contain" />
+
       <S.ButtonsContainer>
         {letters.map((letter, index) => (
           <S.Button key={index} onPress={() => handleSelectedButton(letter)}>
@@ -71,6 +72,7 @@ export default function Page6({ route }) {
           </S.Button>
         ))}
       </S.ButtonsContainer>
+
       <Feather
         style={{ padding: 20 }}
         name="chevron-right"

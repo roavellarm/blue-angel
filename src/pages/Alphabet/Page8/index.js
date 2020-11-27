@@ -3,7 +3,7 @@ import { Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
-import { images, checkLetterSpell } from '../../../utils'
+import { images, checkLetterSpell, sort } from '../../../utils'
 import * as S from './styles'
 
 export default function Page8({ route }) {
@@ -15,17 +15,15 @@ export default function Page8({ route }) {
   const successMsg = `Parabéns! Você acertou! A palavra ${sortedImage?.name} começa com a letra ${sortedImage?.letter}!`
   const errorMsg = `A palavra ${sortedImage?.name} não começa com essa letra. Tente novamente!`
 
-  const getALetter = (arr) => arr[Math.floor(Math.random() * arr.length)]
-
   const sortImage = (lettersOptions) => {
-    const sortedLetter = getALetter(lettersOptions)
+    const sortedLetter = sort(lettersOptions)
     setSortedImage(images.find((image) => image.letter === sortedLetter))
   }
 
   const sortLetters = () => {
     const sorted = []
     while (sorted.length < 3) {
-      const newLetter = getALetter(letters)
+      const newLetter = sort(letters)
       if (!sorted.includes(newLetter)) sorted.push(newLetter)
     }
     setSortedLetters(sorted)
@@ -49,7 +47,7 @@ export default function Page8({ route }) {
   return (
     <Container color="#0daecc">
       <S.ImageContainer>
-        <S.Image source={sortedImage?.image} resizeMode="cover" />
+        <S.Image source={sortedImage?.image} resizeMode="contain" />
       </S.ImageContainer>
 
       <S.ButtonsContainer>

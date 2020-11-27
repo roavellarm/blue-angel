@@ -12,7 +12,11 @@ export default function Container({ color, hasPadding = true, children }) {
     <StyledContainer
       color={color}
       hasPadding={hasPadding}
-      contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }}
+      contentContainerStyle={{
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
     >
       {children}
     </StyledContainer>

@@ -2,30 +2,35 @@ import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
-import image from '../../../assets/images/backgrounds/image.png'
 import { delayTime } from '../../../utils'
 import * as S from './styles'
 
-export default function Page7({ route }) {
+const levelsTitles = [
+  { level: 3, title: 'Frases com muitas palavras' },
+  { level: 2, title: 'Frases com três palavras' },
+  { level: 1, title: 'Frases com duas palavras' },
+]
+
+export default function Page2({ route }) {
   const { navigate } = useNavigation()
-  const text = 'TODO OBJETO COMEÇA COM UMA LETRA.'
   const { speak, stopSpeaking } = useSpeachContext()
+  const { level: key } = route.params
+  const selectedLevel = levelsTitles.find((option) => option.level === key)
 
   const handleNavigation = async () => {
     await delayTime(5000)
     stopSpeaking()
-    return navigate({ name: 'Alphabet-Page8', params: route.params })
+    return navigate({ name: 'Phrase-Page3', params: route.params })
   }
 
   useEffect(() => {
-    speak(text)
+    speak(selectedLevel.title)
     handleNavigation()
   }, [])
 
   return (
-    <Container color="#02A7E8">
-      <S.Image source={image} />
-      <S.Text>{text}</S.Text>
+    <Container color="#9b4acd">
+      <S.Text>{selectedLevel.title}</S.Text>
     </Container>
   )
 }

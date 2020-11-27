@@ -1,5 +1,5 @@
 import React from 'react'
-import { Alert } from 'react-native'
+// import { Alert } from 'react-native
 import { useNavigation } from '@react-navigation/native'
 
 import abc from '../../assets/images/buttons/abc-button.png'
@@ -13,8 +13,8 @@ export default function Home() {
 
   const buttonsList = [
     { image: abc, action: () => navigate('Alphabet-Page1') },
-    { image: book, action: () => Alert.alert('You clicked me!') },
-    { image: pencil, action: () => Alert.alert('You clicked me!') },
+    { image: book, action: () => navigate('Syllable-Page1') },
+    { image: pencil, action: () => navigate('Phrase-Page1') },
   ]
 
   return (
@@ -24,7 +24,7 @@ export default function Home() {
           key={index}
           image={button.image}
           onPress={button.action}
-          enabled={button.image === abc}
+          // enabled={button.image !== pencil}
         />
       ))}
     </Container>

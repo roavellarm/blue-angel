@@ -16,6 +16,16 @@ export default function Router() {
       <Screen name="Alphabet-Page6" component={Page.Alphabet.Page6} />
       <Screen name="Alphabet-Page7" component={Page.Alphabet.Page7} />
       <Screen name="Alphabet-Page8" component={Page.Alphabet.Page8} />
+
+      <Screen name="Syllable-Page1" component={Page.Syllable.Page1} />
+      <Screen name="Syllable-Page2" component={Page.Syllable.Page2} />
+      <Screen name="Syllable-Page3" component={Page.Syllable.Page3} />
+      <Screen name="Syllable-Page4" component={Page.Syllable.Page4} />
+
+      <Screen name="Phrase-Page1" component={Page.Phrase.Page1} />
+      <Screen name="Phrase-Page2" component={Page.Phrase.Page2} />
+      <Screen name="Phrase-Page3" component={Page.Phrase.Page3} />
+      <Screen name="Phrase-Page4" component={Page.Phrase.Page4} />
     </Navigator>
   )
 }
