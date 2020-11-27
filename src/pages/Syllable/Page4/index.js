@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Modal, View } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
 import twoSyllables from './exercicies/twoSyllables'
 import threeSyllables from './exercicies/threeSyllables'
 import fourSyllables from './exercicies/fourSyllables'
 import fiveSyllables from './exercicies/fiveSyllables'
-import { checkLetterSpell, delayTime } from '../../../utils'
+import { delayTime, sort, randomize } from '../../../utils'
 import * as S from './styles'
 
 export default function Page4({ route }) {
+  const { navigate } = useNavigation()
   const [modalVisible, setModalVisible] = useState(false)
   const { level } = route.params
   const { speak, stopSpeaking } = useSpeachContext()
@@ -19,32 +21,29 @@ export default function Page4({ route }) {
   const [errorMsg, setErrorMsg] = useState('')
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false)
 
-  const sortExercise = (arr) => arr[Math.floor(Math.random() * arr.length)]
-
-  const randomizeSyllables = (arr) => arr.sort(() => Math.random() - 0.5)
-
   const handleModal = async () => {
     setModalVisible(true)
     await delayTime(3000)
     setModalVisible(false)
   }
 
-  const handleSelectedButton = (syllable) => {
+  const handleSelectedButton = async (syllable) => {
     stopSpeaking()
-    speak(checkLetterSpell(syllable))
+    speak(syllable)
     if (syllable === exercise.correctAnswer) {
       setIsCorrectAnswer(true)
       speak(successMsg)
       handleModal()
-    } else {
-      setIsCorrectAnswer(false)
-      speak(errorMsg)
-      handleModal()
+      await delayTime(6000)
+      return navigate({ name: 'Home', params: route.params })
     }
+    setIsCorrectAnswer(false)
+    speak(errorMsg)
+    return handleModal()
   }
 
   const handleStates = (syllablesExerciciesList) => {
-    const sortedExercise = sortExercise(syllablesExerciciesList)
+    const sortedExercise = sort(syllablesExerciciesList)
     setExercise(sortedExercise)
     setSuccessMsg(
       `Parabéns! Você acertou! A palavra ${sortedExercise.word} começa com a sílaba ${sortedExercise.correctAnswer}!`
@@ -52,7 +51,7 @@ export default function Page4({ route }) {
     setErrorMsg(
       `A palavra ${sortedExercise.word} não começa com essa sílaba. Tente novamente!`
     )
-    const syllablesOptions = randomizeSyllables(sortedExercise.options)
+    const syllablesOptions = randomize(sortedExercise.options)
     return setButtonSyllables(syllablesOptions)
   }
 
