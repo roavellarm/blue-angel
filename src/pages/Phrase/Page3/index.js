@@ -9,7 +9,7 @@ import * as S from './styles'
 export default function Page3({ route }) {
   const { navigate } = useNavigation()
   const { speak, stopSpeaking } = useSpeachContext()
-  const title = 'Clique nas palavras corretas'
+  const title = 'Ordenar as palavras para formar a frase'
 
   useEffect(() => speak(title), [])
 
