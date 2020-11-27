@@ -25,7 +25,7 @@ const threeSyllables = [
     image: aviao,
     correctAnswer: 'A',
     options: ['A', 'CO', 'MU'],
-    word: 'aviao',
+    word: 'avião',
   },
   {
     image: cachorro,
