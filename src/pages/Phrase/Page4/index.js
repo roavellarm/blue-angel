@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Modal, View } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import Container from '../../../components/Container'
 import { useSpeachContext } from '../../../contexts/speak'
 import twoWords from './exercicies/twoWords'
@@ -9,6 +10,7 @@ import { delayTime, randomize, sort } from '../../../utils'
 import * as S from './styles'
 
 export default function Page4({ route }) {
+  const { navigate } = useNavigation()
   const [modalVisible, setModalVisible] = useState(false)
   const { level } = route.params
   const { speak, stopSpeaking } = useSpeachContext()
@@ -40,7 +42,7 @@ export default function Page4({ route }) {
         handleModal()
         setIsSelected([])
         setAnswer('')
-        // navegar pro próximo
+        navigate({ name: 'Home', params: route.params })
       } else {
         setIsCorrectAnswer(false)
         speak(errorMsg)
