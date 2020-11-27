@@ -29,9 +29,12 @@ export default function Page4({ route }) {
   }
 
   const handleSelectedButton = (phrase) => {
+    const comparison = phrase.filter(
+      (word) => exercise.correctAnswer.indexOf(word) > -1
+    )
     stopSpeaking()
     speak(checkLetterSpell(phrase))
-    if (phrase === exercise.correctAnswer) {
+    if (comparison.length === phrase.length) {
       setIsCorrectAnswer(true)
       speak(successMsg)
       handleModal()
