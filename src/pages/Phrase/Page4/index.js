@@ -5,7 +5,7 @@ import { useSpeachContext } from '../../../contexts/speak'
 import twoWords from './exercicies/twoWords'
 import threeWords from './exercicies/threeWords'
 import moreWords from './exercicies/moreWords'
-import { checkLetterSpell, delayTime } from '../../../utils'
+import { delayTime, randomize, sort } from '../../../utils'
 import * as S from './styles'
 
 export default function Page4({ route }) {
@@ -13,15 +13,13 @@ export default function Page4({ route }) {
   const { level } = route.params
   const { speak, stopSpeaking } = useSpeachContext()
   const [exercise, setExercise] = useState({})
+  const [phraseWordsQuantity, setPhraseWordsQuantity] = useState(0)
+  const [isSelected, setIsSelected] = useState([])
   const [buttonPhrases, setButtonPhrases] = useState([])
   const [successMsg, setSuccessMsg] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
-  const [totalCorrectAnswers, setTotalCorrectAnswers] = useState(0)
+  const [answer, setAnswer] = useState('')
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false)
-
-  const sortExercise = (arr) => arr[Math.floor(Math.random() * arr.length)]
-
-  const randomisePhrases = (arr) => arr.sort(() => Math.random() - 0.5)
 
   const handleModal = async () => {
     setModalVisible(true)
@@ -29,38 +27,45 @@ export default function Page4({ route }) {
     setModalVisible(false)
   }
 
-  const handleSelectedButton = (phrase) => {
+  const handleSelectedButton = (word) => {
     stopSpeaking()
-    speak(checkLetterSpell(phrase))
+    speak(word)
+    setIsSelected((old) => [...old, word])
+    setAnswer(`${answer} ${word}`)
 
-    if (exercise.correctAnswer.indexOf(phrase) > -1) {
-      setTotalCorrectAnswers(totalCorrectAnswers + 1)
-    } else {
-      setIsCorrectAnswer(false)
-      speak(errorMsg)
-      handleModal()
-    }
-
-    if (setIsCorrectAnswer === exercise.correctAnswer.length) {
-      speak(successMsg)
-      handleModal()
+    if (isSelected.length + 1 === phraseWordsQuantity) {
+      if (`${answer} ${word}`.trim() === exercise.correctAnswer) {
+        setIsCorrectAnswer(true)
+        speak(successMsg)
+        handleModal()
+        setIsSelected([])
+        setAnswer('')
+        // navegar pro próximo
+      } else {
+        setIsCorrectAnswer(false)
+        speak(errorMsg)
+        handleModal()
+        setIsSelected([])
+        setAnswer('')
+      }
     }
   }
 
-  const handleStates = (phrasesExerciciesList) => {
-    const sortedExercise = sortExercise(phrasesExerciciesList)
+  const handleStates = async (phrasesExerciciesList) => {
+    const sortedExercise = sort(phrasesExerciciesList)
     setExercise(sortedExercise)
+    setPhraseWordsQuantity(sortedExercise.correctAnswer.split(' ').length)
     setSuccessMsg(
-      `Parabéns! Você acertou! A palavra ${sortedExercise.correctAnswer.toString()}!`
+      `Parabéns! Você acertou a frase ${sortedExercise.correctAnswer.toString()}!`
     )
     setErrorMsg(
-      `A palavra ${sortedExercise.correctAnswer.toString()} não se escreve assim. Tente novamente!`
+      `A frase ${sortedExercise.correctAnswer.toString()} não se escreve assim. Tente novamente!`
     )
-    const phrasesOptions = randomisePhrases(sortedExercise.options)
+    const phrasesOptions = randomize(sortedExercise.options)
     return setButtonPhrases(phrasesOptions)
   }
 
-  const handleSelectedChoice = async () => {
+  const handleSelectedChoice = () => {
     if (level === 1) return handleStates(twoWords)
     if (level === 2) return handleStates(threeWords)
     if (level === 3) return handleStates(moreWords)
@@ -79,7 +84,11 @@ export default function Page4({ route }) {
 
       <S.ButtonsContainer>
         {buttonPhrases.map((phrase, index) => (
-          <S.Button key={index} onPress={() => handleSelectedButton(phrase)}>
+          <S.Button
+            key={index}
+            isSelected={isSelected.includes(phrase)}
+            onPress={() => handleSelectedButton(phrase)}
+          >
             <S.ButtonText>{phrase.toUpperCase()}</S.ButtonText>
           </S.Button>
         ))}
@@ -97,14 +106,14 @@ export default function Page4({ route }) {
           }}
         >
           {isCorrectAnswer ? (
-            <Container>
+            <>
               <S.Image
                 resizeMode="contain"
                 source={exercise.image} // Colocar alguma imagem que simbolice correto/sucesso
                 style={{ width: 150 }}
               />
-              <S.ButtonText>{exercise.word}</S.ButtonText>
-            </Container>
+              <S.ButtonText>{exercise.correctAnswer}</S.ButtonText>
+            </>
           ) : (
             <>
               <S.Image
