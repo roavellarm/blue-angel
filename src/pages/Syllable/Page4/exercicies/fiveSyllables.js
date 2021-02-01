@@ -1,17 +1,22 @@
-import { hipopotamo } from '../../../../assets/images/forLessons'
+import { hipopotamo, rinoceronte } from '../../../../assets/images/forLessons'
 
 const fiveSyllables = [
   {
     image: hipopotamo,
     correctAnswer: 'HI',
     options: ['HI', 'CA', 'TO'],
-    word: 'elefante',
+    word: 'hipopótamo',
+  },
+  {
+    image: rinoceronte,
+    correctAnswer: 'RI',
+    options: ['RI', 'NO', 'TO'],
+    word: 'rinoceronte',
   },
   // Jacaretinga,
   // Jaguatirica,
   // Ornitorrinco,
   // Piracatinga,
-  // Rinoceronte,
 ]
 
 export default fiveSyllables

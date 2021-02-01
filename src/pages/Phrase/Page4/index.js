@@ -6,16 +6,34 @@ import { useSpeachContext } from '../../../contexts/speak'
 import twoWords from './exercicies/twoWords'
 import threeWords from './exercicies/threeWords'
 import moreWords from './exercicies/moreWords'
-import { delayTime, randomize, sort } from '../../../utils'
+import { delayTime, randomize, checkLetterSpell, sort } from '../../../utils'
 import * as S from './styles'
+
+const initialState = {
+  modalVisible: false,
+  phraseWordsQuantity: 0,
+  exercise: {},
+  exerciseDone: [],
+  exerciseQuantity: 0,
+  exerciseList: [],
+  isSelected: [],
+  buttonPhrases: [],
+  successMsg: '',
+  errorMsg: '',
+  answer: '',
+  isCorrectAnswer: false,
+}
 
 export default function Page4({ route }) {
   const { navigate } = useNavigation()
-  const [modalVisible, setModalVisible] = useState(false)
   const { level } = route.params
-  const { speak, stopSpeaking } = useSpeachContext()
-  const [exercise, setExercise] = useState({})
+  const [state, setState] = useState({})
+  const [modalVisible, setModalVisible] = useState(false)
   const [phraseWordsQuantity, setPhraseWordsQuantity] = useState(0)
+  const [exercise, setExercise] = useState({})
+  const [exerciseDone, setExerciseDone] = useState([])
+  const [exerciseQuantity, setExercisesQuantity] = useState(0)
+  const [exerciseList, setExercisesList] = useState([])
   const [isSelected, setIsSelected] = useState([])
   const [buttonPhrases, setButtonPhrases] = useState([])
   const [successMsg, setSuccessMsg] = useState('')
@@ -29,53 +47,85 @@ export default function Page4({ route }) {
     setModalVisible(false)
   }
 
-  const handleSelectedButton = (word) => {
+  const handleCurrentExercise = (currentExercise) => {
+    setExercise(currentExercise)
+    setPhraseWordsQuantity(currentExercise.correctAnswer.split(' ').length)
+    setSuccessMsg(
+      `Parabéns! Você acertou a frase ${currentExercise.correctAnswer.toString()}!`
+    )
+    setErrorMsg(
+      `A frase ${currentExercise.correctAnswer.toString()} não se escreve assim. Tente novamente!`
+    )
+    const phrasesOptions = randomize(currentExercise.options)
+    return setButtonPhrases(phrasesOptions)
+  }
+
+  const handleChoice = (phrasesExerciciesList) => {
+    const sortedExercise = sort(phrasesExerciciesList)
+    setExercisesList(phrasesExerciciesList)
+    setExercisesQuantity(phrasesExerciciesList.length)
+    handleCurrentExercise(sortedExercise)
+  }
+
+  const sortNewExercise = () => {
+    let currentExercise = sort(exerciseList)
+    while (exerciseDone.includes(currentExercise.correctAnswer)) {
+      currentExercise = sort(exerciseList)
+    }
+    return handleCurrentExercise(currentExercise)
+  }
+
+  const handleSelectedButton = async (word) => {
     stopSpeaking()
-    speak(word)
+    speak(checkLetterSpell(word))
     setIsSelected((old) => [...old, word])
     setAnswer(`${answer} ${word}`)
 
     if (isSelected.length + 1 === phraseWordsQuantity) {
       if (`${answer} ${word}`.trim() === exercise.correctAnswer) {
+        setExerciseDone(exercise.correctAnswer)
         setIsCorrectAnswer(true)
         speak(successMsg)
         handleModal()
+        await delayTime(6000)
         setIsSelected([])
         setAnswer('')
-        navigate({ name: 'Home', params: route.params })
-      } else {
-        setIsCorrectAnswer(false)
-        speak(errorMsg)
-        handleModal()
-        setIsSelected([])
-        setAnswer('')
+        if (exerciseDone.length === exerciseQuantity) {
+          return navigate({ name: 'Home', params: route.params })
+        }
+        return sortNewExercise()
       }
+      setIsCorrectAnswer(false)
+      speak(errorMsg)
+      handleModal()
+      setIsSelected([])
+      return setAnswer('')
     }
   }
 
-  const handleStates = async (phrasesExerciciesList) => {
-    const sortedExercise = sort(phrasesExerciciesList)
-    setExercise(sortedExercise)
-    setPhraseWordsQuantity(sortedExercise.correctAnswer.split(' ').length)
-    setSuccessMsg(
-      `Parabéns! Você acertou a frase ${sortedExercise.correctAnswer.toString()}!`
-    )
-    setErrorMsg(
-      `A frase ${sortedExercise.correctAnswer.toString()} não se escreve assim. Tente novamente!`
-    )
-    const phrasesOptions = randomize(sortedExercise.options)
-    return setButtonPhrases(phrasesOptions)
-  }
+  //   const sortedExercise = sort(phrasesExerciciesList)
+  //   setExercise(sortedExercise)
+  //   setPhraseWordsQuantity(sortedExercise.correctAnswer.split(' ').length)
+  //   setSuccessMsg(
+  //     `Parabéns! Você acertou a frase ${sortedExercise.correctAnswer.toString()}!`
+  //   )
+  //   setErrorMsg(
+  //     `A frase ${sortedExercise.correctAnswer.toString()} não se escreve assim. Tente novamente!`
+  //   )
+  //   const phrasesOptions = randomize(sortedExercise.options)
+  //   return setButtonPhrases(phrasesOptions)
+  // }
 
-  const handleSelectedChoice = () => {
-    if (level === 1) return handleStates(twoWords)
-    if (level === 2) return handleStates(threeWords)
-    if (level === 3) return handleStates(moreWords)
-    return handleStates(moreWords)
-  }
+  // const handleSelectedChoice = () => {
+  //   if (level === 1) return handleStates(twoWords)
+  //   if (level === 2) return handleStates(threeWords)
+  //   if (level === 3) return handleStates(moreWords)
+  //   return handleStates(moreWords)
 
   useEffect(() => {
-    handleSelectedChoice()
+    if (level === 1) handleChoice(twoWords)
+    if (level === 2) handleChoice(threeWords)
+    if (level === 3) handleChoice(moreWords)
   }, [])
 
   return (

@@ -30,6 +30,7 @@ import playson from './playson.png'
 import queijo from './queijo.png'
 import rato from './rato.png'
 import read from './read.png'
+import rinoceronte from './rinoceronte.png'
 import run from './run.png'
 import sapo from './sapo.png'
 import sleep from './sleep.png'
@@ -76,6 +77,7 @@ export {
   queijo,
   rato,
   read,
+  rinoceronte,
   run,
   sapo,
   sleep,
