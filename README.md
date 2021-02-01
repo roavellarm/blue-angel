@@ -6,10 +6,9 @@
 
 <ul>
   <li><a href="#description">Description</a></br></li>
-  <li><a href="#How+to+Download">How to Download</a></br></li>
-  <li><a href="#members">Members</a></br></li>
+  <li><a href="#How%20to%20Download">How to Download</a></br></li>
   <li><a href="#functionalities">Functionalities</a></br></li>
-  <li><a href="#installation">Installation</a></br></li>
+  <li><a href="#Clone%20project">Clone project</a></br></li>
 </ul>
 
 <br />
